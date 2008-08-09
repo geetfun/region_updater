@@ -1,0 +1,26 @@
+Canada:
+    label: province
+    regions:
+        - Alberta
+        - British Columbia
+        - Manitoba
+        - Ontario
+        - Prince Edward Island
+United States:
+    label: state
+    regions:
+        - New York
+        - Florida
+        - California
+        - Washington
+        - Texas
+China:
+    label: province
+    regions:
+        - Guang Dong
+Mexico:
+    label: state
+    regions:
+        - Aguascalientes
+        - Baja California
+        - Baja California Sur

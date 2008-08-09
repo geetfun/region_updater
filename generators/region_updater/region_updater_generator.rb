@@ -44,11 +44,11 @@ class RegionUpdaterGenerator < Rails::Generator::Base
     file.close
 
     path_js = Pathname.new(RAILS_ROOT + "/public/javascripts")
-    file_js = Pathname.new("region_updator_countries.js")
+    file_js = Pathname.new("countries.js")
     file = File.new((path_js + file_js), "w+")
 
     result = ""
-    result += "var Countries=$H({"
+    result += "var RegionUpdaterCountries=$H({"
     countries = hash.to_a
     countries.each do |country|
       result += "\"" + country[0] + "\":$H({"

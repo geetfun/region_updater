@@ -1,13 +1,74 @@
 RegionUpdater
 =============
 
-Introduction goes here.
+==> What does this plugin do?
+Generates javascript files and provides helper for automatically updating select fields for
+regions/states/provinces when specific countries are selected.
+
+eg. If USA is selected, the label changes to "state", and the sub choices for regions become 
+	"New York, Florida, California, etc."
+
+	If Canada is selected, the label changes to "province", and the sub choices for regions
+	become "British Columbia, Ontario, etc."
+
+==> Requirements
+1) Ruby on Rails 2.1 (tested on version 2.1, may work with prior versions)
+2) Prototype 1.6 javascript framework
 
 
-Example
-=======
+Usage
+=====
 
-Example goes here.
+If you want to customize the country and region files, go to the directory:
+/vendor/plugins/region_updater/generators/region_updater/countries
+and copy the file default.yaml to custom.yaml.
+
+Edit the custom.yaml file. It is in YAML format. For an example entry of a country
+
+	Canada:
+    	label: province
+    	regions:
+        	- Alberta
+        	- British Columbia
+        	- Saskatchewan
+        	- Ontario
+        	- Prince Edward Island
+
+The plugin generator will generate a javascript variable from this and WILL NOT automatically 
+sort the list of regions to alphabetical order. You must do this yourself when you enter the 
+regions. This is so that you have greater control of which choices will show first regardless 
+of alphabetical sorting.
+
+==> To install
+1) 
+
+2) Edit custom.yaml (see above instructions) if you want to customize the choices of the
+regions. Otherwise skip to the next step.
+
+3) Go to your rails app directory:
+
+For the default country region choices type:
+	script/generate region_updater
+
+For the custom country region choices (assuming you've edited the custom.yaml file):
+	script/generate region_updater --custom
+
+4) Include the javascript in your app.
+There are two javascript files you need to include:
+- region_updater.js
+- region_updater_countries.js
+
+eg. <%= javascript_include_tag :all %>	in your layout files
+
+5) To use the helpers.
+
+Please refer to code for options
+
+region_country_select
+region_country_select_tag
+region_update_label
+region_update_select
+region_update_select_tag
 
 
-Copyright (c) 2008 [name of plugin creator], released under the MIT license
+Copyright (c) 2008 Galaxypooh, Simon Chiu, released under the MIT license

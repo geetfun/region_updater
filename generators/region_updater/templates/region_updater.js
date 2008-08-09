@@ -1,24 +1,27 @@
 var updateRegion = {
 	region: function() {
-		$('regioner').hide();
-		$('regioner2').hide();
+		// resets
+		$('region_label').hide();
+		$('region_select').hide();
+		
+		// performs update of region
 		var country = this.getValue();
-		var label = Countries.get(this.getValue());
+		var label = RegionUpdaterCountries.get(this.getValue());
 		if (label) {
 			label = label.get("label");
 			if (label=="null") {
 				label=""
 			} else {
-				var regions = Countries.get(country).get("regions");	
+				var regions = RegionUpdaterCountries.get(country).get("regions");	
 			}
-			$('regioner').innerHTML = label;
-			$('regioner').show();
-			var return_choices = '';
+			$('region_label').innerHTML = label;
+			$('region_label').show();
+			var return_choices = '<option>Choose a selection</option>';
 			var choices = regions.each(function(s) {
 				return_choices += '<option>' + s + '</option>';
 			});
-			$('regioner2').innerHTML = return_choices;
-			$('regioner2').show();
+			$('region_select').innerHTML = return_choices;
+			$('region_select').show();
 		} else {
 			return false;
 		}
